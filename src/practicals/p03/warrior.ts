@@ -6,9 +6,14 @@ export class Warrior extends Character {
   constructor(name: string, weapon: string, health: number = 100) {
     super(name, health);
     this.weapon = weapon;
-    }
+  }
 
-  getWeapon() : string {
+  getWeapon(): string {
     return this.weapon;
   }
+  
+  receiveDamage(damage: number) {
+    damage = this.name === "King Arthur" ? damage * 0.9 : damage;
+    this.health = this.health - damage;
   }
+}

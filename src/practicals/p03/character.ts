@@ -14,7 +14,6 @@ export class Character {
     return this.health;
   }
   receiveDamage(damage: number)  {
-    damage = this.name === "King Arthur" ? damage * 0.9 : damage;
     this.health = this.health - damage;
   }
 }
