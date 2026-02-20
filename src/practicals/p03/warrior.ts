@@ -11,9 +11,9 @@ export class Warrior extends Character {
   getWeapon(): string {
     return this.weapon;
   }
-  
+
   receiveDamage(damage: number) {
-    damage = this.name === "King Arthur" ? damage * 0.9 : damage;
-    this.health = this.health - damage;
+    const now = this.health;
+    this.health = now - (damage - damage * 0.1);
   }
 }
