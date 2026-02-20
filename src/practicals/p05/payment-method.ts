@@ -8,7 +8,5 @@ export class PaymentMethod {
   getAccountName(): string {
     return this.accountName;
   }
-
-
 }
 

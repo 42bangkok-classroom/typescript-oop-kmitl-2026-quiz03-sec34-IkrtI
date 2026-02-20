@@ -1,22 +1,24 @@
-export class EWallet {
-    private walletId: string;
-    protected accountName: string;
+import { Payable } from "./payable";
+import { PaymentMethod } from "./payment-method";
 
-    constructor(accountName: string, walletId: string) {
-        this.accountName = accountName;
-        this.walletId = walletId;
-    }
+export class EWallet extends PaymentMethod implements Payable {
+  private walletId: string;
 
-    getAccountName(): string {
-        return this.accountName;
-    }
+  constructor(accountName: string, walletId: string) {
+    super(accountName);
+    this.walletId = walletId;
+  }
 
-    processPayment(amount: number): boolean {
-        console.log(`Cutting e-wallet balance: ${amount} Baht`);
-        return true;
-    }
+  public getAccountName(): string {
+    return this.accountName;
+  }
 
-    getPaymentFee(amount: number): number {
-        return amount * 0.01;
-    }
+  public processPayment(amount: number): boolean {
+    console.log(`Cutting e-wallet balance: ${amount} Baht`);
+    return true;
+  }
+
+  public getPaymentFee(amount: number): number {
+    return amount * 0.01;
+  }
 }

@@ -1,22 +1,20 @@
-export class CreditCard {
+import { Payable } from "./payable";
+import { PaymentMethod } from "./payment-method";
+
+export class CreditCard extends PaymentMethod implements Payable {
   private cardNumber: string;
-  protected accountName: string;
 
   constructor(accountName: string, cardNumber: string) {
-    this.accountName = accountName;
+    super(accountName);
     this.cardNumber = cardNumber;
   }
 
-  getAccountName(): string {
-    return this.accountName;
-  }
-
-  processPayment(amount: number): boolean {
+  public processPayment(amount: number): boolean {
     console.log(`Cutting credit card balance: ${amount} Baht`);
     return true;
   }
 
-  getPaymentFee(amount: number): number {
+  public getPaymentFee(amount: number): number {
     return amount * 0.02;
   }
 }
